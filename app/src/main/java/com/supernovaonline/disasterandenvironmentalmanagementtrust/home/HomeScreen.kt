@@ -29,6 +29,13 @@ fun HomeScreen() {
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold
             )
+            CollectionList()
+            Text(
+                "Top Sellers",
+                fontSize = 20.sp,
+                color = Color.White,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
