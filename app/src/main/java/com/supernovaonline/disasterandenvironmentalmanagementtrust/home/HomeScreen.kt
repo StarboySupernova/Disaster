@@ -2,6 +2,8 @@ package com.supernovaonline.disasterandenvironmentalmanagementtrust.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +23,7 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .padding(16.dp)
+                .verticalScroll(rememberScrollState()) //enabling vertical scroll
         ) {
             CategoryList()
             Text(
@@ -36,6 +39,7 @@ fun HomeScreen() {
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold
             )
+            ProgrammeList()
         }
     }
 }
