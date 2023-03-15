@@ -11,7 +11,7 @@ import java.util.*
   val id: UUID = UUID.randomUUID()
  )
 
-val nfts = listOf<Programme>(
+val programmes = listOf<Programme>(
  Programme("Wave", "wav2 #5672", R.drawable.card_wave2, 5160, 0.018),
  Programme("Abstract Pink", "abstract #2538", R.drawable.card_pink, 1800, 0.906),
  Programme("Wave", "wavepi #5267", R.drawable.card_wave2, 2030, 0.26),
