@@ -22,7 +22,7 @@ import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.Disa
 
 @Composable
 fun OnBoardingScreen() {
-    Scaffold {padding ->
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
