@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -14,22 +15,63 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.home.HomeScreen
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.onboarding.OnBoardingScreen
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.stats.StatsScreen
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DisasterAndEnvironmentalManagementTrustTheme
 
 @Composable
 fun RootScreen() {
+    val navigationController = rememberNavController()
+
     Scaffold(
         bottomBar = {
             BottomBar()
         }
-    ) { padding ->
+    ) {  padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
         ) {
-            HomeScreen()
+            NavHost(navController = navigationController, startDestination = NavigationItem.Login.route) {
+                composable(NavigationItem.Login.route) {
+                    OnBoardingScreen()
+                }
+
+                composable(NavigationItem.Home.route) {
+                    HomeScreen()
+                }
+
+                composable(NavigationItem.Stats.route) {
+                    StatsScreen()
+                }
+
+                composable(NavigationItem.Add.route) {
+                    Text("Add")
+                }
+
+                composable(NavigationItem.Search.route) {
+                    Text("Search")
+                }
+
+                composable(NavigationItem.Profile.route) {
+                    Text("Profile")
+                }
+            }
         }
+    }
+}
+
+@Preview
+@Composable
+fun RootScreenPreview() {
+    DisasterAndEnvironmentalManagementTrustTheme {
+        RootScreen()
     }
 }
 
