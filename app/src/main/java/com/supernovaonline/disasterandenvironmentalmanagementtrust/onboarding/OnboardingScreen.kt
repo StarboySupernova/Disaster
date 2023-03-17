@@ -21,7 +21,9 @@ import com.supernovaonline.disasterandenvironmentalmanagementtrust.R
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DisasterAndEnvironmentalManagementTrustTheme
 
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    navigateAction: () -> Unit
+) {
     Scaffold { padding ->
         Column(
             modifier = Modifier
@@ -45,7 +47,7 @@ fun OnBoardingScreen() {
                         fontSize = 36.sp,
                         fontWeight = FontWeight.Black
                     )
-                    Spacer(modifier = Modifier.fillMaxSize(0.65f))
+                    Spacer(modifier = Modifier.fillMaxSize(0.58f))
                     Card (
                         elevation = 4.dp,
                         modifier = Modifier
@@ -79,12 +81,14 @@ fun OnBoardingScreen() {
                                 textAlign = TextAlign.Center
                             )
                             Spacer(modifier = Modifier.padding(bottom = 27.dp))
-                            Button(onClick = { /*TODO*/ }, shape = RoundedCornerShape(percent = 50), modifier = Modifier.border(
-                                width = 1.dp,
-                                color = Color.White.copy(0.5f),
-                                shape = RoundedCornerShape(percent = 50)
-                            )
-                                , colors = ButtonDefaults.buttonColors(
+                            Button(
+                                onClick = navigateAction,
+                                shape = RoundedCornerShape(percent = 50),
+                                modifier = Modifier.border(
+                                    width = 1.dp,
+                                    color = Color.White.copy(0.5f),
+                                    shape = RoundedCornerShape(percent = 50)
+                                ), colors = ButtonDefaults.buttonColors(
                                     backgroundColor = Color(151, 169, 246, alpha = 0x32),
                                     contentColor = Color.White
                                 )
@@ -108,6 +112,6 @@ fun OnBoardingScreen() {
 @Composable
 fun CardPreview () {
     DisasterAndEnvironmentalManagementTrustTheme {
-        OnBoardingScreen()
+        OnBoardingScreen{}
     }
 }

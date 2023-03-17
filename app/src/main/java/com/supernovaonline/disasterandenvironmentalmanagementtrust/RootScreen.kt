@@ -50,7 +50,10 @@ fun RootScreen() {
         ) {
             NavHost(navController = navigationController, startDestination = if (shouldShowOnboarding) { NavigationItem.Login.route } else { NavigationItem.Home.route }) {
                 composable(NavigationItem.Login.route) {
-                    OnBoardingScreen()
+                    OnBoardingScreen(navigateAction = {
+                        navigationController.navigate(NavigationItem.Home.route)
+                        shouldShowOnboarding = false
+                    })
                 }
 
                 composable(NavigationItem.Home.route) {
