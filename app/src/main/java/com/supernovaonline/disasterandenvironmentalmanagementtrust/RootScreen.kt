@@ -11,14 +11,17 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.home.HomeScreen
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.onboarding.OnBoardingScreen
@@ -31,7 +34,7 @@ fun RootScreen() {
 
     Scaffold(
         bottomBar = {
-            BottomBar()
+            BottomBar(navigationController)
         }
     ) {  padding ->
         Column(
@@ -85,7 +88,7 @@ sealed class NavigationItem(var route: String, var icon: ImageVector, var title:
 }
 
 @Composable
-fun BottomBar() {
+fun BottomBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Home,
         NavigationItem.Stats,
@@ -98,6 +101,9 @@ fun BottomBar() {
         backgroundColor = Color(33, 17, 52),
         contentColor = Color.White
     ) {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Image(
@@ -109,9 +115,20 @@ fun BottomBar() {
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = false,
-                selected = false,
-                onClick = { /* TODO */ }
+                selected = currentRoute == item.route,
+                onClick = {
+                    navController.navigate(item.route) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
+                            }
+                        }
+
+                        launchSingleTop = true //preventing copying views whe user re-selects same tab
+                        restoreState = true //preserving scroll state
+                    }
+                }
             )
         }
+        }
     }
-}
