@@ -12,6 +12,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -31,17 +34,21 @@ import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.Disa
 @Composable
 fun RootScreen() {
     val navigationController = rememberNavController()
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
     Scaffold(
         bottomBar = {
-            BottomBar(navigationController)
+            // hiding bottom bar
+            if (!shouldShowOnboarding) {
+                BottomBar(navigationController)
+            }
         }
     ) {  padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
         ) {
-            NavHost(navController = navigationController, startDestination = NavigationItem.Login.route) {
+            NavHost(navController = navigationController, startDestination = if (shouldShowOnboarding) { NavigationItem.Login.route } else { NavigationItem.Home.route }) {
                 composable(NavigationItem.Login.route) {
                     OnBoardingScreen()
                 }
