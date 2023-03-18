@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DisasterAndEnvironmentalManagementTrustTheme
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.R
-
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DEMTTypography
 
 
 @Composable
@@ -45,10 +45,7 @@ fun CategoryCard(title: String, image: Painter) {
 
         Text(
             title,
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp,
-            textAlign = TextAlign.Center,
+            style = DEMTTypography.h4,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 16.dp)

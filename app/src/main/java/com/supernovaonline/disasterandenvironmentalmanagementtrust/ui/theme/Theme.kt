@@ -40,7 +40,7 @@ fun DisasterAndEnvironmentalManagementTrustTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = DEMTTypography,
         shapes = Shapes,
         content = content
     )

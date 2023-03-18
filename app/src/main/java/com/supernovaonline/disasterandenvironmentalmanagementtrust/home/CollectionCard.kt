@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.collections
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DEMTTypography
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DisasterAndEnvironmentalManagementTrustTheme
 
 @Composable
@@ -63,10 +64,7 @@ fun CollectionCard(title: String, image: Painter, likes: Int) {
         ) {
             Text(
                 title,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Left,
-                color = Color.White
+                style = DEMTTypography.subtitle1
             )
             Spacer(modifier = Modifier.weight(1f))
             Row(
@@ -88,10 +86,7 @@ fun CollectionCard(title: String, image: Painter, likes: Int) {
                 }
                 Text(
                     likes.toString(),
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 13.sp,
-                    textAlign = TextAlign.Right,
-                    color = Color(235, 235, 245).copy(0.6f)
+                    style = DEMTTypography.subtitle2
                 )
             }
         }

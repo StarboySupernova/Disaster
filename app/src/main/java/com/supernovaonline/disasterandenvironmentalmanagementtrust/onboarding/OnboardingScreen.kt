@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.R
+import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DEMTTypography
 import com.supernovaonline.disasterandenvironmentalmanagementtrust.ui.theme.DisasterAndEnvironmentalManagementTrustTheme
 
 @Composable
@@ -43,9 +44,7 @@ fun OnBoardingScreen(
                 ) {
                     Text(
                         "Welcome to D.E.M.T.",
-                        color = Color.White,
-                        fontSize = 36.sp,
-                        fontWeight = FontWeight.Black
+                        style = DEMTTypography.h1
                     )
                     Spacer(modifier = Modifier.fillMaxSize(0.58f))
                     Card (
@@ -70,15 +69,11 @@ fun OnBoardingScreen(
                         ) {
                             Text(
                                 "Disaster and Environmental Management Trust",
-                                color = Color.White,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 20.sp,
-                                textAlign = TextAlign.Center
+                                style = DEMTTypography.body2
                             )
                             Text(
                                 "Promoting environmental preservation strategies",
-                                color = Color.White.copy(0.8f),
-                                textAlign = TextAlign.Center
+                                style = DEMTTypography.body1
                             )
                             Spacer(modifier = Modifier.padding(bottom = 27.dp))
                             Button(
@@ -96,8 +91,7 @@ fun OnBoardingScreen(
                                 Text(
                                     "Get Started Now",
                                     modifier = Modifier.padding(horizontal = 40.dp, vertical = 4.dp),
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.SemiBold
+                                    style = DEMTTypography.button
                                 )
                             }
                         }
